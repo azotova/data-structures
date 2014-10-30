@@ -14,11 +14,9 @@ var makeQueue = function(){
 
   someInstance.dequeue = function(){
     var result=storage[0];
-    delete storage[0];
     if (count>0) {
       for (var key in storage) {
         storage[key-1]=storage[key];
-        delete storage[key];
       }
       count--;
       return result;
