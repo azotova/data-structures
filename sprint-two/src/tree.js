@@ -17,18 +17,19 @@ treeMethods.addChild = function(value){
 };
 
 treeMethods.contains = function(target){
+  var result=false;
+  var count=0; //Keeping track of the number of runs
   var searchTree = function(tree) {
-    var result=false;
+    count++;
+    // console.log("----------------------------");
+    // console.log("count: " + count);
+    if(result === true ){ return true; };
     if (tree.value===target) {
-      return true;
+      result =  true;
     } else if (tree.children) {
-
       for (var i=0;i<tree.children.length;i++) {
-        console.log(tree.children[i].value);
-        result = result || searchTree(tree.children[i]);
+        searchTree(tree.children[i]);
       }
-    } else {
-      result= false;
     }
     return result;
   };
