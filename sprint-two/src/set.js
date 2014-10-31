@@ -14,10 +14,11 @@ setPrototype.add = function(item){
 };
 
 setPrototype.contains = function(item){
-  this._storage.hasOwnProperty(item);
+  return this._storage.hasOwnProperty(item);
 };
 
 setPrototype.remove = function(item){
+  delete this._storage[item];
 };
 
 /*
