@@ -8,13 +8,11 @@ Graph.prototype.addNode = function(newNode, toNode){
     this.addEdge(newNode,toNode);
   } else if (Object.keys(this.nodes).length===1) {
     this.addEdge(Object.keys(this.nodes)[0],newNode);
-    var y = this.edges[Object.keys(this.nodes)[0]][newNode];
   }
   this.nodes[newNode]=newNode;
 };
 
 Graph.prototype.contains = function(node){
-  console.log(this.nodes);
   return this.nodes.hasOwnProperty(node);
 };
 

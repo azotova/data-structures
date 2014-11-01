@@ -18,10 +18,8 @@ HashTable.prototype.insert = function(k, v){
 HashTable.prototype.retrieve = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
   var tempArr=this._storage.get(i);
-  console.log(tempArr);
   if(Array.isArray(tempArr)){
     for(var i = 0; i < tempArr.length; i++){
-      console.log("return " + tempArr[i]);
       if(!tempArr[i]) {
         return null;
       } else if (tempArr[i][0] === k){
@@ -35,9 +33,7 @@ HashTable.prototype.retrieve = function(k){
 HashTable.prototype.remove = function(k){
     var i = getIndexBelowMaxForKey(k, this._limit);
     var tempArr = this._storage.get(i);
-    console.log(tempArr);
     for(var i = 0; i < tempArr.length; i++){
-      console.log(tempArr);
       if(tempArr[i][0] === k){
         delete tempArr[i];
       }
