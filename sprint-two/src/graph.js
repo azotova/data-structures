@@ -38,19 +38,20 @@ Graph.prototype.addEdge = function(fromNode, toNode){
 
 Graph.prototype.removeEdge = function(fromNode, toNode){
   delete this.edges[fromNode][toNode];
-  var checkNode = function (node) {
+  var that=this;
+  var checkNode = function (node){
     var result=false;
-
-    for (var key in this.nodes) {
-      result=result || this.getEdge(node,this.nodes[key])||this.getEdge(this.nodes[key],node);
-
+    for (var key in that.nodes) {
+      result=result || that.getEdge(node,that.nodes[key])||that.getEdge(that.nodes[key],node);
+      // result = result || this.edges[node][key]||this.edges[key][node];
     }
     return result;
   }
-  if (checkNode.call(this,fromNode)===false) {
+  if (checkNode(fromNode)===false) {
+  //if (checkNode.call(this,fromNode)===false) {
     this.removeNode(fromNode);
   }
-  if (checkNode.call(this,toNode)===false) {
+  if (checkNode(toNode)===false) {
     this.removeNode(toNode);
   }
 };

@@ -57,4 +57,14 @@ describe('graph', function() {
     expect(graph.contains('jacket')).to.equal(false);
   });
 
+it('should remove nodes without any edges, but keep others', function() {
+    graph.addNode('jacket');
+    graph.addNode('hat');
+    graph.addNode('rat','jacket');
+ //   graph.addEdge('rat','jacket');
+    graph.removeEdge('jacket', 'hat');
+    expect(graph.contains('hat')).to.equal(false);
+    expect(graph.contains('jacket')).to.equal(true);
+  });
+
 });
